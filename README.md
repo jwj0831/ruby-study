@@ -1,6 +1,6 @@
 # Ruby Language Study
 
-## Day 1: Basic Ruby Grammar
+## Day 1: Basic Ruby Grammar 1
 ### 루비의 네이밍 관례
 * 지역변수, 메서드 파라미터, 메서드 이름은 소문자나 '_'로 시작
 * 전역변수는 $로 시작
@@ -47,6 +47,28 @@
 * if나 while의 body의 문장이 하나일 경우의 shortcut 문법
 	* puts "10 is bigger than 9" if 10 > 9
 	* square *= square while square < 1000
+
+## Day 2: Basic Ruby Grammar 2
+### 정규표현식
+* 다른 스크립트 언어처럼 Ruby도 정규식을 언어에서 기본으로 지원
+* 양 / 문자 안에서 정규식 표현 가능
+	* 예시 /Perl|Python/
+* Ruby가 모든 것을 객체로 보듯 정규식도 객체이다
+* 정규식 내에서 사용되는 캐릭터 그룹 표현
+	* \d 는 숫자
+	* \s 는 white space(space, tab, newline 등)
+	* \w
+* =~ 가 정규표현식에서 매칭되는 첫번째 포지션을 반환함
+
+###  Block과 Iterator
+* Ruby의 강력한 문법
+* 메서드의 인자로 코드를 집어넣을 수 있다.
+* 중괄호{ } 또는 do end로 코드의 Block을 정의
+* 관례상 코드가 한줄이면 중괄호, 여러 줄이면 do end를 선호
+* 메서드 안에서 yield를 코드 Block이 실행 됨
+* yield에 매개변수를 ()안에 넣을 수 있음, 이 매개변수는 Block 안에서 | | 로 선언하여 받음
+* Block은 iterator를 통해서 사용되기도 함
+	* 예시 animals.each { |animal| puts animal }
 
 
 
