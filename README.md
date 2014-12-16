@@ -1,4 +1,7 @@
 # Ruby Language Study
+### 교재
+* [Programming Ruby 1.9 & 2.0 (4th edition)](https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
+* [루비로 배우는 객체지향 디자인](http://www.insightbook.co.kr/post/8327)
 
 ## Day 1: Basic Ruby Grammar 1
 ### 루비의 네이밍 관례
@@ -69,6 +72,72 @@
 * yield에 매개변수를 ()안에 넣을 수 있음, 이 매개변수는 Block 안에서 | | 로 선언하여 받음
 * Block은 iterator를 통해서 사용되기도 함
 	* 예시 animals.each { |animal| puts animal }
+
+### 입출력
+* 대표적인 출력 메서드 puts은 newline이 들어감 print는 안 들어감, p는 nil일 경우 찍어줌
+* printf는 C의 printf와 유사한 방식
+* 입력은 gets가 한라인을 읽어옴, EOF일경우 nil 반환
+
+### CLI 매개변수
+* 커맨드라인에서 실행 시 두가지 방식으로 받을 수 있음
+	* ARGV 변수
+	* ARGF (매개변수가 읽어야 할 파일일 경우)
+
+## Day 3: Class & Object
+### Java에서 Ruby로
+* 기본적인 OO 개념은 Java와 다를 바가 없음
+
+### 객체 생성
+* Costructor는 intialize() 메서드로 매개변수로 객체 생성 가능
+* Day1에서 한대로 멤버 변수(instance variable)는 @로 시작 한다~
+* Java의 to_string 메서드 처름 to_s를 구현해 줘야 puts (객체) 요청시 정상적으로 내부 스테이트 값을 보여줌
+* to_s 안 할거면 puts 대신 p 메서드 사용 하면 됨
+
+### Instance Variable
+* 멤버변수 접근을 위한 getter 메서드 작성 가능: accessor
+* getter는 자주 작성하는 코드라 간단히 다음과 같은 shortcut 문법 제공
+	* attr_reader :isbn, :price
+* 내부 상태가 메서드로 오픈 되었을 때 attribute라고 표현
+* attr_reader를 선언한다고 해서 자동으로 멤버변수를 생성하는 것은 아님!!
+* setter 메서드는 독특하게 메서드 명 뒤에 "="를 붙임 
+	* = 붙이는 것은 의무는 아니지만 가독성 측면에서 좋아보임
+	* 예시: book1.price = book1price * 1.25
+* setter역시 shortcut 제공
+	* attr_writer :price
+* getter / setter 다 하려면 "attr_accessor"로 작성
+
+### Virtual Attribute
+* 변수의 accessor로 단순히 wrapping하는 경우 말고 커스터마이징이 필요할 때 직접 setter/getter 메서드를 구현하면 됨
+* 외부에서 볼 때는 객체의 attribute이지만 내부적으로는 기존의 attribute를 활용하여 setter/getter를 재정의한 것
+
+### Attribute? or Instance Variable?
+* 사실 둘 간의 차이를 따지는 건 소모적 논쟁
+* 객체 내부에서만 관리되는 상태는 instance variale
+* 메서드를 통해서 외부에 접근이 허락되는 것을 attribute로 보면 됨
+
+
+### Class를 사용한 프로그램
+* 외부 파일 클래스 사용시 'require (파일명)' 또는 'require_relative (파일명)'선언
+	* 예시 require 'csv'
+
+### Access Control
+* 일반적인 OO 언어와 동일하게 public, protected, private 제공
+* Access의 컨트롤은 동적으로 결정된다는 점
+* method 구현 앞에 표시하거나, access 레벨에 따라 메서드의 이름을 적는 방식으로 표현
+
+
+### Variables
+* Ruby에서 assignment를 하면 객체의 reference만 변수가 보관한다.
+* 변수를 다른 변수에 할당하면 객체의 레퍼런스만 공유하게 된다.
+* 새롭게 다른 객체로 완전히 복사하려면 "dup"메서드 사용한다.
+* Ruby에서는 Java와 달리 String이 수정가능 하다
+* 더이상 수정 안하려면 freeze메서드를 호출한다.
+
+
+
+
+
+
 
 
 
