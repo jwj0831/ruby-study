@@ -134,6 +134,55 @@
 * 더이상 수정 안하려면 freeze메서드를 호출한다.
 
 
+## Day 4: Array / Hashes
+###  Array 기본
+* object reference의 collection
+* Literal로  생성하거나 new 메서드로 생성하면 됨
+* [] operator로 인덱싱 된다. []도 다른 루비 명령어처럼 실제는 메서드
+
+### Array 인덱싱 활용
+* [start, count] 시작 인덱스에서 카운트 개수만큼
+* [start..finish] 시작 인덱스에서 마침 인덱스 까지
+* [start...finish] 시작 인덱스에서 마침 인덱스 전까지
+
+### Array 값 집어넣기 1
+* a = [1,3,5,7,9]  ==> [1, 3, 5, 7, 9]
+* a[1] = 'bat' ==> [1, "bat", 5, 7, 9]
+* a[-3] = 'cat' ==> [1, "bat", "cat", 7, 9]
+* a[3] = [ 9, 8 ] ==> [1, "bat", "cat", [9, 8], 9]
+* a[6] = 99 ==> [1, "bat", "cat", [9, 8], 9, nil, 99]
+
+### Array 값 집어넣기 2
+* a = [ 1, 3, 5, 7, 9 ] ==> [ 1, 3, 5, 7, 9 ]
+* a[2, 2] = 'cat' ==>  [1, 3, "cat", 9 ]
+* a[2, 0] = 'dog' ==> [1, 3, "dog", "cat", 9 ]	
+	* 길익 0일때는 시작포인트 앞에 삽입
+* a[1, 1] = [9, 8, 7] ==>  [1, 9, 8, 7, "dog", "cat", 9 ]
+* a[0..3] = [ ] ==> ["dog", "cat", 9 ]
+* a[5..6] = 99, 98 ==> ["dog", "cat", 9, nil, nil, 99, 98 ]
+
+### Array를 활용한 다양한 데이터 구조
+* stack, set, queue, dequeue 등으로 그냥 바로 사용 가능
+* push / pop 명령어를 쓰면 stack
+* push / shift 명령어를 쓰면 queue
+
+
+### Hash 기본
+* associative array, map, dictionary로 부르기도 함
+* 인덱싱된 객체 레퍼런스의 집합이라는 점에서 Array와 유사
+* 하지만 Hash는 어떤 객체라도 인덱스로 정의할 수 있음
+* 따라서 key라고 정의하는 인덱스와 value 값을 함께 넣음
+	* 예시) h = { 'dog' => 'canine', 'cat'  => 'feline', 'donkey' => 'asinine' }
+* 1.9 버전에서 Key 값을 Symbol로 받을 수 있음
+	* h = { :dog => 'canine', :cat  => 'feline', :donkey => 'asinine' }
+* 심볼을 키로 쓸 때 ":"을 뒤에 두고 "=>"도 생략 가능 (json스러운 문법)
+	** h = { dog: 'canine', cat: 'feline', donkey: 'asinine' }
+* 배열과의 가장 큰 차이는 인덱스로 어떤 객체를 사용해도 된다는 점
+* 핵심은 Ruby에서는 아이템의 순서를 기억하고 있다는 점
+
+
+
+
 
 
 
